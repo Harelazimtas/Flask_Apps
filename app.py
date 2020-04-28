@@ -42,13 +42,12 @@ def user_create():
 @app.route('/insert_user',methods=["POST"])
 def insert_user():
     req = request.get_json()
-    ts = time.time()
-    req['create_time']=datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+    req['create_time']=datetime.now()
     print(req)
     user = users(id=req['id'], nickname=req['nickname'],name=req['name'],password=req['password'],create_time=req['create_time'],status=req['status'])
     db.session.add(user)
     db.session.commit()
-    return str(req)
+    return req
 
 @app.route('/admin/users',methods=["GET"])
 def show_all():
