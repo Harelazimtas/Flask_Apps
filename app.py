@@ -2,6 +2,8 @@ from flask import Flask, render_template, jsonify, request, redirect, url_for
 import json
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import time
+
 app=Flask(__name__)
 
 ENV='dev'
@@ -40,8 +42,8 @@ def user_create():
 @app.route('/insert_user',methods=["POST"])
 def insert_user():
     req = request.get_json()
-    now = datetime.now()
-    req['create_time']=datetime.timestamp(now)
+    ts = time.time()
+    req['create_time']=datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
     print(req)
     user = users(id=req['id'], nickname=req['nickname'],name=req['name'],password=req['password'],create_time=req['create_time'],status=req['status'])
     db.session.add(user)
