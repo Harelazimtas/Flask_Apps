@@ -3,22 +3,9 @@
     <head>
     </head>
     <body>
-        <div class="user">
-            <p id="test"></p>
-            <p id="test1"></p>
-            <p id="test3"></p>
-            <p id="test4"></p>
-        
-        
-            <script>
-                var b = JSON.parse('{{ a | tojson | safe}}');
-                document.getElementById('test').innerHTML = b.id;
-                document.getElementById('test1').innerHTML = b.nickname;
-                document.getElementById('test4').innerHTML = b.name;
-                document.getElementById('test4').innerHTML = b.password;
-            </script>
-
-        </div>
-        <br>   
+        {% for k,v in users %}
+            <p>{{ v }}</p>
+            <p>{{ k }}</p>
+        {% endfor %}
     </body>
 </html>
