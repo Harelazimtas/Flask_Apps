@@ -11,8 +11,6 @@
         <br>
         <input type="password" placeholder="password" id="password" maxlength="20" minlength="5" required>
         <br>
-        <input type="text" id="create_time" placeholder="create_time">
-        <br>
         <input type="number" id="status" placeholder="status">
         <br>
         <button id="create"  onclick="sendJSON()">Create User </button>
@@ -21,9 +19,6 @@
 
     </body>
 </html>
-
-
-
 
 {% block script %}
 <script>
@@ -40,7 +35,6 @@
             nickname:nickname.value,
             name:name.value,
             password:password.value,
-            create_time:create_time.value,
             status:status.value
         }
         

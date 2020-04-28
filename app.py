@@ -36,6 +36,10 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/create_users')
+def create_users():
+    return render_template('create_users')
+    
 
 @app.route('/users',methods=["POST"])
 def user_json():
@@ -49,6 +53,7 @@ def user_json():
         return req
     except:
         return "<!DOCTYPE html> <h1>Error!! please try other Id because is unique</h1>"
+
 
 @app.route('/admin/Users',methods=["GET"])
 def show_all():
@@ -72,6 +77,5 @@ def show_all():
 
 
 if __name__== "__main__":
-    #db.create_all()
     app.debug=True
     app.run() 
