@@ -9,7 +9,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://eunamewfsidzet:3dc1416abf5e68aca5f4dec3695b6f57153fa05655c027fabfe186c3b0b6cf7b@ec2-50-17-21-170.compute-1.amazonaws.com:5432/d5ukkd9etal4nu'
 
 db = SQLAlchemy(app)
-db.create_all()
+#db.create_all()
 
 class users(db.Model):
     __tablename__ = 'users'
@@ -20,12 +20,11 @@ class users(db.Model):
     create_time = db.Column(db.DateTime,default=datetime.now)
     status = db.Column(db.Integer)
 
-    def __init__(self, id, nickname, name, password,create_time,status):
+    def __init__(self, id, nickname, name, password,status):
         self.id = id
         self.nickname = nickname
         self.name = name
         self.password = password
-        self.create_time = create_time
         self.status = status
 
 @app.route('/')
@@ -41,6 +40,9 @@ def user_create():
 def insert_user():
     req = request.get_json()
     print(req)
+    u = User(id=12, nickname='john',name="harel",password="11",status="12")
+    db.session.add(u)
+    db.session.commit()
     return render_template("users.html")
 
 @app.route('/admin/users',methods=["GET"])
