@@ -38,7 +38,7 @@ def index():
 
 @app.route('/create_users',methods=['GET'])
 def create_users():
-    return render_template('create_users')
+    return render_template('create_users.html')
 
 
 @app.route('/users',methods=["POST"])
