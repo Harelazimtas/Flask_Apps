@@ -40,7 +40,7 @@ def user_create():
 def insert_user():
     req = request.get_json()
     print(req)
-    u = users(id=12, nickname='john',name="harel",password="11",status="12")
+    u = users(id=req.id, nickname=req.nickname,name=req.name,password=req.password,status=req.status)
     db.session.add(u)
     db.session.commit()
     return render_template("users.html")
