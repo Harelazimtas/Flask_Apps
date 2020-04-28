@@ -43,7 +43,7 @@ def insert_user():
     u = users(id=req.id, nickname=req.nickname,name=req.name,password=req.password,status=req.status)
     db.session.add(u)
     db.session.commit()
-    return render_template("users.html")
+    return render_template("show_user.html")
 
 @app.route('/admin/users',methods=["GET"])
 def show_all():
