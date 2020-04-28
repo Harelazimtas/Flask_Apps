@@ -53,7 +53,7 @@ def insert_user():
 def show_all():
     all_user = users.query.all()
     json={}
-    return all_user
+    return str(all_user)
 
 #@app.route('/submit',methods=['POST'])
 #def submit():
