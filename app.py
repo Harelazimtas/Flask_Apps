@@ -38,7 +38,7 @@ def user_create():
 
 @app.route('/insert_user',methods=["POST"])
 def insert_user():
-    #req = request.get_json()
+    req = request.get_json()
     print(req)
     u = users(id=req['id'], nickname=req['nickname'],name=req['name'],password=req['password'],status=req['status'])
     db.session.add(u)
