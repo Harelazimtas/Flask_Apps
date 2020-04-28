@@ -42,7 +42,6 @@ def user_create():
 @app.route('/insert_user',methods=["POST"])
 def insert_user():
     req = request.get_json()
-    print(users.query.all())
     req['create_time']=datetime.now()
     print(req)
     user = users(id=req['id'], nickname=req['nickname'],name=req['name'],password=req['password'],create_time=req['create_time'],status=req['status'])
@@ -52,8 +51,9 @@ def insert_user():
 
 @app.route('/admin/users',methods=["GET"])
 def show_all():
-
-    return render_template("show_user.html")
+    all_user = users.query.all()
+    json={}
+    return all_user
 
 #@app.route('/submit',methods=['POST'])
 #def submit():
