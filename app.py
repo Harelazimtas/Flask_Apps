@@ -34,13 +34,10 @@ class users(db.Model):
 def index():
     return render_template('index.html')
 
-@app.route('/users')
-def user_create():
-    return render_template('users.html')
 
 
-@app.route('/insert_user',methods=["POST"])
-def insert_user():
+@app.route('/users',methods=["POST"])
+def users():
     req = request.get_json()
     req['create_time']=datetime.now()
     print(req)
@@ -55,7 +52,7 @@ def show_all():
     list_user=[]
     print(type(all_user))
     for index in range(len(all_user)):
-        print(all_user[0])
+        print(all_user[0].id)
         list_user.append({
 	        "id":all_user[index]['id'],
 	        "nickname": all_user[index]['nickname'],
@@ -68,19 +65,6 @@ def show_all():
         'array':list_user
     }
     return json
-
-#@app.route('/submit',methods=['POST'])
-#def submit():
-#    if request.method=='POST':
-#        Id=request.form['Id']
-#        nickname=request.form['nickname']
- #       name=request.form['name']
-  #      password=request.form['password']
-   #     create_time=request.form['create_time']
-    #    status=request.form['status']
-     #   print(Id," ",name)
-      #  return render_template('index.html')
-
 
 
 if __name__== "__main__":
