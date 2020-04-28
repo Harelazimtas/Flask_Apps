@@ -60,7 +60,7 @@ def show_all():
 	        "nickname": all_user[index]['nickname'],
 	        "name":all_user[index]['name'],
 	        "password":all_user[index]['password'],
-            "create_time":all_user[index]['create_time']
+            "create_time":all_user[index]['create_time'],
 	        "status":all_user[index]['status']
         })
     json={
