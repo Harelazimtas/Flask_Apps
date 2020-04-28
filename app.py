@@ -55,6 +55,7 @@ def show_all():
     list_user=[]
     print(type(all_user))
     for index in range(len(all_user)):
+        print(all_user[0])
         list_user.append({
 	        "id":all_user[index]['id'],
 	        "nickname": all_user[index]['nickname'],
