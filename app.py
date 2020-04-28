@@ -46,7 +46,7 @@ def users():
     db.session.commit()
     return req
 
-@app.route('/admin/users',methods=["GET"])
+@app.route('/admin/Users',methods=["GET"])
 def show_all():
     all_user = users.query.all()
     list_user=[]

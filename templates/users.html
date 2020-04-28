@@ -47,7 +47,7 @@
         label=document.getElementById('jsontext')
         label.innerHTML =JSON.stringify(data)
     
-        fetch(`${window.origin}/insert_user`, {
+        fetch(`${window.origin}/users`, {
           method: "POST",
           credentials: "include",
           body: JSON.stringify(data),
