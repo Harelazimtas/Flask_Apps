@@ -13,7 +13,27 @@
             <br>
             <input type="number" name="status" placeholder="status">
             <br>
-            <input type="submit" value="submit" onclick="submitform()">
+            <input type="submit" value="submit" onclick="sendJSON()">
         </form>
     </body>
 </html>
+<script>
+function sendJSON(){ 
+    let Id = document.querySelector('#Id'); 
+    let nickname = document.querySelector('#nickname'); 
+    let name = document.querySelector('#name'); 
+    let password = document.querySelector('#password'); 
+    let create_time = document.querySelector('#create_time'); 
+    let status = document.querySelector('#status'); 
+    var data={
+        Id: Id,
+        nickname:nickname,
+        name:name,
+        password:password,
+        create_time:create_time,
+        status:status
+    }  
+    console.log(data)
+  
+}
+</script>
