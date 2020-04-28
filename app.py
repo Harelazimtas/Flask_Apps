@@ -9,6 +9,9 @@ ENV='dev'
 def index():
     return render_template('index.html')
 
+@app.route('/user_create')
+def user_create():
+    return render_template('user_create.html')
 
 @app.route('/submit',methods=['POST'])
 def submit():
