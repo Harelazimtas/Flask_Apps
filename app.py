@@ -52,8 +52,21 @@ def insert_user():
 @app.route('/admin/users',methods=["GET"])
 def show_all():
     all_user = users.query.all()
-    json={}
-    return str(all_user)
+    list_user=[]
+    print(type(all_user))
+    for index in range(len(all_user)):
+        list_user.append({
+	        "id":all_user[index]['id'],
+	        "nickname": all_user[index]['nickname'],
+	        "name":all_user[index]['name'],
+	        "password":all_user[index]['password'],
+            "create_time":all_user[index]['create_time']
+	        "status":all_user[index]['status']
+        })
+    json={
+        'array':list_user
+    }
+    return json
 
 #@app.route('/submit',methods=['POST'])
 #def submit():
