@@ -1,8 +1,7 @@
-from flask import Flask, render_template, jsonify, request, redirect, url_for
+from flask import Flask, render_template, jsonify, request
 import json
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-import time
 
 app=Flask(__name__)
 
@@ -41,10 +40,13 @@ def user_json():
     req = request.get_json()
     req['create_time']=datetime.now()
     print(req)
-    user = users(id=req['id'], nickname=req['nickname'],name=req['name'],password=req['password'],create_time=req['create_time'],status=req['status'])
-    db.session.add(user)
-    db.session.commit()
-    return req
+    try:
+        user = users(id=req['id'], nickname=req['nickname'],name=req['name'],password=req['password'],create_time=req['create_time'],status=req['status'])
+        db.session.add(user)
+        db.session.commit()
+        return req
+    except:
+        return "<h1>Error!! please try other Id because is unique</h1>"
 
 @app.route('/admin/Users',methods=["GET"])
 def show_all():
