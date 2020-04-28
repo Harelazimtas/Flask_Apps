@@ -20,11 +20,12 @@ class users(db.Model):
     create_time = db.Column(db.DateTime,default=datetime.now)
     status = db.Column(db.Integer)
 
-    def __init__(self, id, nickname, name, password,status):
+    def __init__(self, id, nickname, name, password,create_time,status):
         self.id = id
         self.nickname = nickname
         self.name = name
         self.password = password
+        self.create_time=create_time
         self.status = status
 
 @app.route('/')
@@ -39,9 +40,10 @@ def user_create():
 @app.route('/insert_user',methods=["POST"])
 def insert_user():
     req = request.get_json()
-    req['create_time']=datetime.now()
+    now = datetime.now()
+    req['create_time']=datetime.timestamp(now)
     print(req)
-    user = users(id=req['id'], nickname=req['nickname'],name=req['name'],password=req['password'],status=req['status'])
+    user = users(id=req['id'], nickname=req['nickname'],name=req['name'],password=req['password'],create_time=req['create_time'],status=req['status'])
     db.session.add(user)
     db.session.commit()
     return str(req)
