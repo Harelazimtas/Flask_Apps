@@ -46,7 +46,7 @@ def user_json():
         db.session.commit()
         return req
     except:
-        return "<h1>Error!! please try other Id because is unique</h1>"
+        return "<!DOCTYPE html> <h1>Error!! please try other Id because is unique</h1>"
 
 @app.route('/admin/Users',methods=["GET"])
 def show_all():
