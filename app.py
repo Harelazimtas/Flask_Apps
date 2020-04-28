@@ -41,7 +41,7 @@ def insert_user():
     req = request.get_json()
     print(req)
     user = users(id=req['id'], nickname=req['nickname'],name=req['name'],password=req['password'],status=req['status'])
-    db.session.add(u)
+    db.session.add(user)
     db.session.commit()
     return render_template("show_user.html",user=user)
 
