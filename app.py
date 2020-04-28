@@ -36,10 +36,10 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/create_users')
+@app.route('/create_users',methods=['GET'])
 def create_users():
     return render_template('create_users')
-    
+
 
 @app.route('/users',methods=["POST"])
 def user_json():
