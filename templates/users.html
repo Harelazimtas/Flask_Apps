@@ -16,8 +16,13 @@
         <input type="number" id="status" placeholder="status">
         <br>
         <button id="create"  onclick="sendJSON()">Create User </button>
+        <br>
+        <label id="jsontext"></label>
+
     </body>
 </html>
+
+
 
 
 {% block script %}
@@ -38,8 +43,11 @@
             create_time:create_time.value,
             status:status.value
         }
+        
+        label=document.getElementById('jsontext')
+        label.innerHTML =JSON.stringify(data)
     
-        fetch(`${window.origin}/show_user`, {
+        fetch(`${window.origin}/insert_user`, {
           method: "POST",
           credentials: "include",
           body: JSON.stringify(data),

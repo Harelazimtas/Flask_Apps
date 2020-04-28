@@ -10,19 +10,21 @@ ENV='dev'
 def index():
     return render_template('index.html')
 
-@app.route('/user_create')
+@app.route('/users')
 def user_create():
-    return render_template('user_create.html')
+    return render_template('users.html')
 
 
-
-
-@app.route('/show_user',methods=["POST"])
-def show_user():
+@app.route('/insert_user',methods=["POST"])
+def insert_user():
     req = request.get_json()
     print(req)
-    return render_template('show_user.html',text=req)
+    return render_template("users.html")
 
+@app.route('/admin/users',methods=["GET"])
+def show_all():
+
+    return render_template("show_user.html")
 
 #@app.route('/submit',methods=['POST'])
 #def submit():
