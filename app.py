@@ -37,7 +37,7 @@ def index():
 
 
 @app.route('/users',methods=["POST"])
-def users():
+def user_json():
     req = request.get_json()
     req['create_time']=datetime.now()
     print(req)
