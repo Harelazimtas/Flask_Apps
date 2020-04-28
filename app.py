@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, jsonify, request, redirect, url_for
+import json
 
 app=Flask(__name__)
 
@@ -12,6 +13,16 @@ def index():
 @app.route('/user_create')
 def user_create():
     return render_template('user_create.html')
+
+
+
+
+@app.route('/show_user',methods=["POST"])
+def show_user():
+    req = request.get_json()
+    print(req)
+    return render_template('show_user.html',text=req)
+
 
 #@app.route('/submit',methods=['POST'])
 #def submit():
