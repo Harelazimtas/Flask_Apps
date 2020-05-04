@@ -2,6 +2,7 @@
 <html>
     <head>
     </head>
+    <h2>Sign-Up</h2>
     <body>
         <input type="text" id="Id" placeholder="User Id" required>
         <br>
@@ -15,9 +16,9 @@
         <br>
         <button id="create"  onclick="sendJSON()">Create User </button>
         <br>
-        <label id="jsontext"></label>
-
     </body>
+    <br>
+    <label id="message"></label>
 </html>
 
 {% block script %}
@@ -37,9 +38,9 @@
             password:password.value,
             status:parseInt(status.value)
         }
-        
-        label=document.getElementById('jsontext')
-        label.innerHTML =JSON.stringify(data)
+        message="The user "+name.value +"added Successfully"
+        label=document.getElementById('message')
+        label.innerHTML =JSON.stringify(message)
     
         fetch(`${window.origin}/users`, {
           method: "POST",
