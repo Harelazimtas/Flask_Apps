@@ -45,6 +45,7 @@ def create_users():
 def user_json():
     req = request.get_json()
     req['create_time']=datetime.now()
+    print(req)
     #Try to add to DB if id exist show error message and don't append
     try:
         user = users(id=req['id'], nickname=req['nickname'],name=req['name'],password=req['password'],create_time=req['create_time'],status=req['status'])
