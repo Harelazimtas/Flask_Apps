@@ -23,12 +23,12 @@
 {% block script %}
 <script>
     function sendJSON(){ 
-        var Id = document.getElementById('Id'); 
+        var Id = parseInt(document.getElementById('Id')); 
         var nickname = document.getElementById('nickname'); 
         var name = document.getElementById('name'); 
         var password = document.getElementById('password'); 
         var create_time = document.getElementById('create_time'); 
-        var status = document.getElementById('status');
+        var status = parseInt(document.getElementById('status'));
         
         var data={
             Id: Id.value,
